@@ -23,5 +23,18 @@ export class ComponentAComponent {
     this.MechList =   this.carService.getMechList();
   }
 
+    evntSendMoney()
+    {
+      let paymentAmount = "10000Rs";
+      this.carService.getPaymentDetails(paymentAmount);
+    }
+
+
+    CarsListInfo : any;
+
+    getBangInfo()
+    {
+      this.CarsListInfo = this.carService.getAllInfo("Banglore")
+    }
 
 }

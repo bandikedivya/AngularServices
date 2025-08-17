@@ -1,10 +1,17 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
+import { HydCarService } from "./HydCarService";
 
 
 //can use this service by using constructor.
-Injectable()
+@Injectable()
 export class CarService
 {
+    // To get service from another service, wes should add the other service's name[HydCarService] in the constructor
+    // then using the local variable in the constructor, we'll call the methods in the other service's [HydCarService].
+    constructor( private hydservice: HydCarService)
+    {
+        //this.hydservice.getHydCarList();
+    }
     getMechList(){
     return ['John','Peter'];
     }
@@ -26,5 +33,35 @@ export class CarService
 
     //      return [morningTime, afterNoonTime , eveningTime];
     //   }
+
+
+    moneyEventEmittor = new EventEmitter<any>();
+    getPaymentDetails(moneyvalue:any)
+    {
+        this.moneyEventEmittor.emit(moneyvalue);
+    }
+
+    getAllInfo(location: string)
+    {
+        if(location == "Banglore")
+        {
+            return "🎉 200000 Lakh Cars Available in 📍Banglore";
+            //return "CarList = 🎉 200000Lakh Car Available";
+            
+        }
+        else if(location == "Hyderabad")
+        {
+            let info = this.hydservice.getHydCarList();
+            return info;
+        }
+        else 
+        {
+            return "⛔ No Service Available";
+        }
+        return null;
+    }
+
+
+
 }
 

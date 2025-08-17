@@ -22,17 +22,39 @@ export class ComponentBComponent {
 
   Timings: any;
   paymentB: any;
-  getCarsList: any;
+ 
 
+
+  PaymentCompB: any;
   constructor(private carservice: CarService) {
   
-
+    this.carservice.moneyEventEmittor.subscribe((result)=>{
+        console.log("From Comp-B" + result);
+        this.PaymentCompB = result;
+    })
 
   }
-
   
     getAvailList()
     {
       this.Timings = this.carservice.getAvailability();
     }
-}
+
+    // evntReceiveMoney()
+    // {
+    //   // this.carservice.moneyEventEmittor.subscribe((result)=>{
+    //   //   console.log(result);
+    //   })
+
+
+    CarHydList : any;
+      getHydInfo()
+      {
+         this.CarHydList = this.carservice.getAllInfo("Hyderabad");
+      }
+
+
+    }
+
+
+

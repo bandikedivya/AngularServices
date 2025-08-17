@@ -1,6 +1,14 @@
 
 
 <button (click)="getMecsList()">Get Mechanics List</button>
-
-
+<br>
+<br>
 <div *ngFor="let name of MechList">👨🏻‍🔧 {{name}}</div>
+
+<button (click)="evntSendMoney()">Pay</button>
+<br>
+<br>
+<button (click)="getBangInfo()">GetBangInformation</button>
+<br>
+<br>
+<p>{{CarsListInfo}}</p>
